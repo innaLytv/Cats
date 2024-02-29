@@ -15,6 +15,13 @@ struct ContentView: View {
                 .foregroundStyle(.tint)
         }
         .padding()
+        .onAppear {
+            let service = CatsNetworkProvider()
+            Task {
+                let breeds = try! await service.searchBreed(by: "air")
+                print(breeds)
+            }
+        }
     }
 }
 

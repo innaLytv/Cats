@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34409AE22B90AFAD002AE497 /* CatsService.swift */; };
+		348C82182B91230200DB02E2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 348C82172B91230200DB02E2 /* Alamofire */; };
+		348C821B2B912C0F00DB02E2 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C821A2B912C0F00DB02E2 /* Breed.swift */; };
+		348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C821D2B91335200DB02E2 /* BreedFact.swift */; };
 		349C6EB62B8BAE1900B4C953 /* CatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB52B8BAE1900B4C953 /* CatsApp.swift */; };
 		349C6EB82B8BAE1900B4C953 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB72B8BAE1900B4C953 /* ContentView.swift */; };
 		349C6EBA2B8BAE1B00B4C953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */; };
@@ -14,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		34409AE22B90AFAD002AE497 /* CatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsService.swift; sourceTree = "<group>"; };
+		348C821A2B912C0F00DB02E2 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
+		348C821D2B91335200DB02E2 /* BreedFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedFact.swift; sourceTree = "<group>"; };
 		349C6EB22B8BAE1900B4C953 /* Cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349C6EB52B8BAE1900B4C953 /* CatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsApp.swift; sourceTree = "<group>"; };
 		349C6EB72B8BAE1900B4C953 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -26,12 +33,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348C82182B91230200DB02E2 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		348C82192B912C0200DB02E2 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				34409AE22B90AFAD002AE497 /* CatsService.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		348C821C2B912C1A00DB02E2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				348C821A2B912C0F00DB02E2 /* Breed.swift */,
+				348C821D2B91335200DB02E2 /* BreedFact.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		349C6EA92B8BAE1900B4C953 = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +76,8 @@
 		349C6EB42B8BAE1900B4C953 /* Cats */ = {
 			isa = PBXGroup;
 			children = (
+				348C821C2B912C1A00DB02E2 /* Models */,
+				348C82192B912C0200DB02E2 /* Networking */,
 				349C6EB52B8BAE1900B4C953 /* CatsApp.swift */,
 				349C6EB72B8BAE1900B4C953 /* ContentView.swift */,
 				349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */,
@@ -83,6 +110,9 @@
 			dependencies = (
 			);
 			name = Cats;
+			packageProductDependencies = (
+				348C82172B91230200DB02E2 /* Alamofire */,
+			);
 			productName = Cats;
 			productReference = 349C6EB22B8BAE1900B4C953 /* Cats.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +141,9 @@
 				Base,
 			);
 			mainGroup = 349C6EA92B8BAE1900B4C953;
+			packageReferences = (
+				348C82162B91230200DB02E2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 349C6EB32B8BAE1900B4C953 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,7 +170,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348C821B2B912C0F00DB02E2 /* Breed.swift in Sources */,
+				34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */,
 				349C6EB82B8BAE1900B4C953 /* ContentView.swift in Sources */,
+				348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */,
 				349C6EB62B8BAE1900B4C953 /* CatsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +380,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		348C82162B91230200DB02E2 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.8.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		348C82172B91230200DB02E2 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 348C82162B91230200DB02E2 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 349C6EAA2B8BAE1900B4C953 /* Project object */;
 }
