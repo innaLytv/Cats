@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		343F712D2B9FBB3500D9288F /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343F712C2B9FBB3500D9288F /* FeedViewModel.swift */; };
 		34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34409AE22B90AFAD002AE497 /* CatsService.swift */; };
 		348C82182B91230200DB02E2 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 348C82172B91230200DB02E2 /* Alamofire */; };
 		348C821B2B912C0F00DB02E2 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C821A2B912C0F00DB02E2 /* Breed.swift */; };
 		348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348C821D2B91335200DB02E2 /* BreedFact.swift */; };
 		349C6EB62B8BAE1900B4C953 /* CatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB52B8BAE1900B4C953 /* CatsApp.swift */; };
-		349C6EB82B8BAE1900B4C953 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB72B8BAE1900B4C953 /* ContentView.swift */; };
+		349C6EB82B8BAE1900B4C953 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB72B8BAE1900B4C953 /* FeedView.swift */; };
 		349C6EBA2B8BAE1B00B4C953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */; };
 		349C6EBD2B8BAE1B00B4C953 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C6EBC2B8BAE1B00B4C953 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		343F712C2B9FBB3500D9288F /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		34409AE22B90AFAD002AE497 /* CatsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsService.swift; sourceTree = "<group>"; };
 		348C821A2B912C0F00DB02E2 /* Breed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
 		348C821D2B91335200DB02E2 /* BreedFact.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedFact.swift; sourceTree = "<group>"; };
 		349C6EB22B8BAE1900B4C953 /* Cats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		349C6EB52B8BAE1900B4C953 /* CatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsApp.swift; sourceTree = "<group>"; };
-		349C6EB72B8BAE1900B4C953 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		349C6EB72B8BAE1900B4C953 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		349C6EBC2B8BAE1B00B4C953 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -79,9 +81,10 @@
 				348C821C2B912C1A00DB02E2 /* Models */,
 				348C82192B912C0200DB02E2 /* Networking */,
 				349C6EB52B8BAE1900B4C953 /* CatsApp.swift */,
-				349C6EB72B8BAE1900B4C953 /* ContentView.swift */,
+				349C6EB72B8BAE1900B4C953 /* FeedView.swift */,
 				349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */,
 				349C6EBB2B8BAE1B00B4C953 /* Preview Content */,
+				343F712C2B9FBB3500D9288F /* FeedViewModel.swift */,
 			);
 			path = Cats;
 			sourceTree = "<group>";
@@ -172,7 +175,8 @@
 			files = (
 				348C821B2B912C0F00DB02E2 /* Breed.swift in Sources */,
 				34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */,
-				349C6EB82B8BAE1900B4C953 /* ContentView.swift in Sources */,
+				343F712D2B9FBB3500D9288F /* FeedViewModel.swift in Sources */,
+				349C6EB82B8BAE1900B4C953 /* FeedView.swift in Sources */,
 				348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */,
 				349C6EB62B8BAE1900B4C953 /* CatsApp.swift in Sources */,
 			);

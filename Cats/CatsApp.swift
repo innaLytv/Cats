@@ -11,7 +11,11 @@ import SwiftUI
 struct CatsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            FeedView(
+                viewModel: FeedViewModel(
+                    service: CatsNetworkProvider()
+                )
+            )
         }
     }
 }

@@ -5,6 +5,6 @@
 //  Created by Inna Lytvynenko on 29.02.2024.
 //
 
-struct Breed: Codable {
+struct Breed: Codable, Hashable {
     let name: String
 }
