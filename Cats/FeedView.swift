@@ -42,9 +42,9 @@ struct FeedView: View {
                 spacing: 16
             ) {
                 ForEach(
-                    viewModel.breedsList,
-                    id: \.self
-                ) { breed in
+                    Array(viewModel.breedsList.enumerated()),
+                    id: \.offset
+                ) { index, breed in
                     ZStack {
                         Rectangle()
                             .frame(height: 200)
@@ -59,13 +59,27 @@ struct FeedView: View {
                                 )
                             )
                         VStack {
-                            Rectangle().foregroundColor(.gray)
+                            Rectangle()
+                                .foregroundStyle(Color(UIColor.clear))
+                                .overlay {
+                                    AsyncImage(url: viewModel.breedsImageURLs[breed.imageID ?? "mock"])
+                                    { image in
+                                        image.resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(maxWidth: 200, maxHeight: 200)
+                                    } placeholder: {
+                                        ProgressView()
+                                    }
+                                }
+                                .clipped()
+                            Spacer()
                             Text(breed.name)
                                 .fontWeight(.semibold)
                         }
                         .padding(.bottom, 8)
                     }
                     .cornerRadius(8)
+                    
                 }
             }
         }

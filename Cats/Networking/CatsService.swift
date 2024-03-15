@@ -11,6 +11,7 @@ protocol CatsNetworkProviding {
     func getAllBreeds(page: Int) async throws -> [Breed]
     func searchBreed(by term: String) async throws -> [Breed]
     func getRandomFact(of breedId: String) async throws -> BreedFact
+    func getRandomImage(of breedId: String) async throws -> CatImage
 }
 
 struct CatsNetworkProvider: CatsNetworkProviding {
@@ -19,19 +20,29 @@ struct CatsNetworkProvider: CatsNetworkProviding {
             "limit": String(Constants.breedsLimit),
             "page": String(page)
         ]
-        return try await AF.request(requestURL(path: "breeds?", parameters: params))
-            .cacheResponse(using: .cache)
-            .serializingDecodable([Breed].self)
-            .value
+        return try await AF.request(
+            requestURL(
+                path: "breeds?",
+                parameters: params
+            )
+        )
+        .cacheResponse(using: .cache)
+        .serializingDecodable([Breed].self)
+        .value
     }
     
     func searchBreed(by term: String) async throws -> [Breed] {
         let params = [
             "q": term
         ]
-        return try await AF.request(requestURL(path: "breeds/search?", parameters: params))
-            .serializingDecodable([Breed].self)
-            .value
+        return try await AF.request(
+            requestURL(
+                path: "breeds/search?",
+                parameters: params
+            )
+        )
+        .serializingDecodable([Breed].self)
+        .value
     }
     
     func getRandomFact(of breedId: String) async throws -> BreedFact {
@@ -39,9 +50,27 @@ struct CatsNetworkProvider: CatsNetworkProviding {
             "limit": "1",
             "page": "0"
         ]
-        return try await AF.request(requestURL(path: "breeds/:\(breedId)/facts", parameters: params))
-            .serializingDecodable(BreedFact.self)
-            .value
+        return try await AF.request(
+            requestURL(
+                path: "breeds/:\(breedId)/facts",
+                parameters: params
+            )
+        )
+        .serializingDecodable(BreedFact.self)
+        .value
+    }
+    
+    func getRandomImage(of breedId: String) async throws -> CatImage {
+        let headers: HTTPHeaders = ["x-api-key" : Constants.apiKey]
+        return try await AF.request(
+            requestURL(
+                path: "images/\(breedId)",
+                parameters: [:]
+            ),
+            headers: headers
+        )
+        .serializingDecodable(CatImage.self)
+        .value
     }
 }
 
@@ -50,7 +79,7 @@ private extension CatsNetworkProvider {
         let parametersString = parameters.reduce("") { resultURL, parameterPair in
             resultURL + parameterPair.key + "=" + parameterPair.value + "&"
         }
-        .dropLast()
+            .dropLast()
         return Constants.baseURL + path + parametersString
     }
 }
