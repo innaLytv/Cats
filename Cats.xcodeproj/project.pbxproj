@@ -16,6 +16,9 @@
 		349C6EB82B8BAE1900B4C953 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 349C6EB72B8BAE1900B4C953 /* FeedView.swift */; };
 		349C6EBA2B8BAE1B00B4C953 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */; };
 		349C6EBD2B8BAE1B00B4C953 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 349C6EBC2B8BAE1B00B4C953 /* Preview Assets.xcassets */; };
+		34F93ED82BA4E81200D384F8 /* BreedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */; };
+		34F93EDA2BA4E81B00D384F8 /* BreedDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */; };
+		34F93EDE2BA4F0D500D384F8 /* BreedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93EDD2BA4F0D500D384F8 /* BreedView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		349C6EB72B8BAE1900B4C953 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		349C6EBC2B8BAE1B00B4C953 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsView.swift; sourceTree = "<group>"; };
+		34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsViewModel.swift; sourceTree = "<group>"; };
+		34F93EDD2BA4F0D500D384F8 /* BreedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +91,9 @@
 				349C6EB92B8BAE1B00B4C953 /* Assets.xcassets */,
 				349C6EBB2B8BAE1B00B4C953 /* Preview Content */,
 				343F712C2B9FBB3500D9288F /* FeedViewModel.swift */,
+				34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */,
+				34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */,
+				34F93EDD2BA4F0D500D384F8 /* BreedView.swift */,
 			);
 			path = Cats;
 			sourceTree = "<group>";
@@ -176,9 +185,12 @@
 				348C821B2B912C0F00DB02E2 /* Breed.swift in Sources */,
 				34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */,
 				343F712D2B9FBB3500D9288F /* FeedViewModel.swift in Sources */,
+				34F93ED82BA4E81200D384F8 /* BreedDetailsView.swift in Sources */,
+				34F93EDE2BA4F0D500D384F8 /* BreedView.swift in Sources */,
 				349C6EB82B8BAE1900B4C953 /* FeedView.swift in Sources */,
 				348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */,
 				349C6EB62B8BAE1900B4C953 /* CatsApp.swift in Sources */,
+				34F93EDA2BA4E81B00D384F8 /* BreedDetailsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

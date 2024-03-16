@@ -9,6 +9,7 @@ import SwiftUI
 
 struct FeedView: View {
     @ObservedObject private var viewModel: FeedViewModel
+    @State private var showingSheet = false
     
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
@@ -16,77 +17,73 @@ struct FeedView: View {
     
     var body: some View {
         ScrollView {
-            HStack {
-                Text("Welcome Cats")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundStyle(
-                        Color(
-                            uiColor: UIColor(
-                                red: 96 / 255,
-                                green: 120 / 255,
-                                blue: 135 / 255,
-                                alpha: 1
-                            )
-                        )
-                    )
-                Spacer()
-            }
-            .padding(.vertical, 30)
-            
+            title
             LazyVGrid(
                 columns: [
-                    GridItem(spacing: 16),
+                    GridItem(spacing: Constants.BreedCard.spacing),
                     GridItem()
                 ],
-                spacing: 16
+                spacing:  Constants.BreedCard.spacing
             ) {
                 ForEach(
                     Array(viewModel.breedsList.enumerated()),
                     id: \.offset
-                ) { index, breed in
-                    ZStack {
-                        Rectangle()
-                            .frame(height: 200)
-                            .foregroundStyle(
-                                Color(
-                                    uiColor: UIColor(
-                                        red: 159 / 255,
-                                        green: 199 / 255,
-                                        blue: 224 / 255,
-                                        alpha: 0.3
-                                    )
-                                )
-                            )
-                        VStack {
-                            Rectangle()
-                                .foregroundStyle(Color(UIColor.clear))
-                                .overlay {
-                                    AsyncImage(url: viewModel.breedsImageURLs[breed.imageID ?? "mock"])
-                                    { image in
-                                        image.resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(maxWidth: 200, maxHeight: 200)
-                                    } placeholder: {
-                                        ProgressView()
-                                    }
-                                }
-                                .clipped()
-                            Spacer()
-                            Text(breed.name)
-                                .fontWeight(.semibold)
+                ) {
+                    index, breed in
+                    BreedView(
+                        imageURL: viewModel.breedsImageURLs[breed.imageID ?? "mock"],
+                        title: breed.name,
+                        height: Constants.BreedCard.height,
+                        onTapAction: {
+                            showingSheet.toggle()
                         }
-                        .padding(.bottom, 8)
-                    }
-                    .cornerRadius(8)
-                    
+                    )
                 }
             }
         }
         .scrollIndicators(.hidden)
-        .padding(.horizontal, 20)
+        .padding(.horizontal, Constants.horizontalSpacing)
         .task {
             await viewModel.fetchBreeds()
+        }
+        .fullScreenCover(isPresented: $showingSheet) {
+            BreedDetailsView(viewModel: BreedDetailsViewModel())
+        }
+    }
+}
+
+private extension FeedView {
+    var title: some View {
+        HStack {
+            Text(Constants.Title.text)
+                .font(.largeTitle)
+                .fontWeight(.black)
+                .foregroundStyle(
+                    Color(uiColor: Constants.Title.foregroundColor)
+                )
+            Spacer()
+        }
+        .padding(.vertical, Constants.Title.verticalPadding)
+    }
+}
+
+private extension FeedView {
+    enum Constants {
+        static let horizontalSpacing = 20.0
+        
+        enum Title {
+            static let text = "Select a breed"
+            static let foregroundColor = UIColor(
+                red: 96 / 255,
+                green: 120 / 255,
+                blue: 135 / 255,
+                alpha: 1
+            )
+            static let verticalPadding = 30.0
+        }
+        enum BreedCard {
+            static let height = 200.0
+            static let spacing = 16.0
         }
     }
 }
