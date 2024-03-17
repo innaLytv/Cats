@@ -8,7 +8,17 @@
 import SwiftUI
 
 final class BreedDetailsViewModel: ObservableObject {
+    let breed: Breed
+    let imageURL: URL?
     
-    init() {
+    init(breed: Breed, imageURL: URL?) {
+        self.breed = breed
+        self.imageURL = imageURL
+    }
+}
+
+extension BreedDetailsViewModel {
+    var temperament: [String] {
+        breed.temperament.components(separatedBy: ",")
     }
 }

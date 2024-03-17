@@ -10,6 +10,7 @@ import SwiftUI
 
 final class FeedViewModel: ObservableObject {
     private let service: CatsNetworkProviding
+    var lastSelectedBreed: Breed?
     
     @Published var breedsList: [Breed] = []
     @Published var breedsImageURLs: [String: URL] = [:]
@@ -33,5 +34,9 @@ extension FeedViewModel {
             }
             breedsImageURLs["mock"] = mockImage
         } catch { }
+    }
+    
+    func breedSelected(at index: Int) {
+        lastSelectedBreed = breedsList[index]
     }
 }

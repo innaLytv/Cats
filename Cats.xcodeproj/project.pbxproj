@@ -19,6 +19,8 @@
 		34F93ED82BA4E81200D384F8 /* BreedDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */; };
 		34F93EDA2BA4E81B00D384F8 /* BreedDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */; };
 		34F93EDE2BA4F0D500D384F8 /* BreedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93EDD2BA4F0D500D384F8 /* BreedView.swift */; };
+		34F93EE12BA782E300D384F8 /* CachedAsyncImage in Frameworks */ = {isa = PBXBuildFile; productRef = 34F93EE02BA782E300D384F8 /* CachedAsyncImage */; };
+		34F93EE32BA783CB00D384F8 /* BreedFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F93EE22BA783CB00D384F8 /* BreedFeatureView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +36,7 @@
 		34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsView.swift; sourceTree = "<group>"; };
 		34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedDetailsViewModel.swift; sourceTree = "<group>"; };
 		34F93EDD2BA4F0D500D384F8 /* BreedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedView.swift; sourceTree = "<group>"; };
+		34F93EE22BA783CB00D384F8 /* BreedFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedFeatureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				348C82182B91230200DB02E2 /* Alamofire in Frameworks */,
+				34F93EE12BA782E300D384F8 /* CachedAsyncImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +98,7 @@
 				34F93ED72BA4E81200D384F8 /* BreedDetailsView.swift */,
 				34F93ED92BA4E81B00D384F8 /* BreedDetailsViewModel.swift */,
 				34F93EDD2BA4F0D500D384F8 /* BreedView.swift */,
+				34F93EE22BA783CB00D384F8 /* BreedFeatureView.swift */,
 			);
 			path = Cats;
 			sourceTree = "<group>";
@@ -124,6 +129,7 @@
 			name = Cats;
 			packageProductDependencies = (
 				348C82172B91230200DB02E2 /* Alamofire */,
+				34F93EE02BA782E300D384F8 /* CachedAsyncImage */,
 			);
 			productName = Cats;
 			productReference = 349C6EB22B8BAE1900B4C953 /* Cats.app */;
@@ -155,6 +161,7 @@
 			mainGroup = 349C6EA92B8BAE1900B4C953;
 			packageReferences = (
 				348C82162B91230200DB02E2 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				34F93EDF2BA782E300D384F8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */,
 			);
 			productRefGroup = 349C6EB32B8BAE1900B4C953 /* Products */;
 			projectDirPath = "";
@@ -186,6 +193,7 @@
 				34409AE32B90AFAD002AE497 /* CatsService.swift in Sources */,
 				343F712D2B9FBB3500D9288F /* FeedViewModel.swift in Sources */,
 				34F93ED82BA4E81200D384F8 /* BreedDetailsView.swift in Sources */,
+				34F93EE32BA783CB00D384F8 /* BreedFeatureView.swift in Sources */,
 				34F93EDE2BA4F0D500D384F8 /* BreedView.swift in Sources */,
 				349C6EB82B8BAE1900B4C953 /* FeedView.swift in Sources */,
 				348C821E2B91335200DB02E2 /* BreedFact.swift in Sources */,
@@ -406,6 +414,14 @@
 				minimumVersion = 5.8.1;
 			};
 		};
+		34F93EDF2BA782E300D384F8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/lorenzofiamingo/swiftui-cached-async-image";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -413,6 +429,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 348C82162B91230200DB02E2 /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		34F93EE02BA782E300D384F8 /* CachedAsyncImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 34F93EDF2BA782E300D384F8 /* XCRemoteSwiftPackageReference "swiftui-cached-async-image" */;
+			productName = CachedAsyncImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

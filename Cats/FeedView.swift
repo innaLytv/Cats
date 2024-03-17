@@ -36,6 +36,7 @@ struct FeedView: View {
                         height: Constants.BreedCard.height,
                         onTapAction: {
                             showingSheet.toggle()
+                            viewModel.breedSelected(at: index)
                         }
                     )
                 }
@@ -47,7 +48,12 @@ struct FeedView: View {
             await viewModel.fetchBreeds()
         }
         .fullScreenCover(isPresented: $showingSheet) {
-            BreedDetailsView(viewModel: BreedDetailsViewModel())
+            BreedDetailsView(
+                viewModel: BreedDetailsViewModel(
+                    breed: viewModel.lastSelectedBreed!, 
+                    imageURL: viewModel.breedsImageURLs[viewModel.lastSelectedBreed!.imageID ?? "mock"]
+                )
+            )
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CachedAsyncImage
 
 struct BreedView: View {
     private let imageURL: URL?
@@ -53,7 +54,7 @@ private extension BreedView {
                     Color(UIColor.clear)
                 )
                 .overlay {
-                    AsyncImage(url: imageURL) { image in
+                    CachedAsyncImage(url: imageURL) { image in
                         image.resizable()
                             .aspectRatio(contentMode: .fill)
                             .frame(maxWidth: height, maxHeight: height)
