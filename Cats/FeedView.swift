@@ -18,6 +18,16 @@ struct FeedView: View {
     var body: some View {
         ScrollView {
             title
+            TextField("Search", text: $viewModel.searchText)
+                .onChange(of: viewModel.searchText) {
+                    viewModel.search(for: viewModel.searchText)
+                }
+                .padding(.all, 15)
+                .background(Color(uiColor: UIColor(red: 242 / 255, green: 242 / 255, blue: 242 / 255, alpha: 1)))
+                .foregroundColor(.black)
+                .cornerRadius(8)
+                .padding(.bottom, 20)
+                
             LazyVGrid(
                 columns: [
                     GridItem(spacing: Constants.BreedCard.spacing),
@@ -26,7 +36,7 @@ struct FeedView: View {
                 spacing:  Constants.BreedCard.spacing
             ) {
                 ForEach(
-                    Array(viewModel.breedsList.enumerated()),
+                    Array(viewModel.displayedBreeds.enumerated()),
                     id: \.offset
                 ) {
                     index, breed in
@@ -69,7 +79,7 @@ private extension FeedView {
                 )
             Spacer()
         }
-        .padding(.vertical, Constants.Title.verticalPadding)
+        .padding(.top, Constants.Title.verticalPadding)
     }
 }
 

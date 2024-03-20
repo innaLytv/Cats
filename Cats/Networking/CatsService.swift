@@ -9,7 +9,7 @@ import Alamofire
 
 protocol CatsNetworkProviding {
     func getAllBreeds(page: Int) async throws -> [Breed]
-    func searchBreed(by term: String) async throws -> [Breed]
+    func searchBreeds(by term: String) async throws -> [Breed]
     func getRandomFact(of breedId: String) async throws -> BreedFact
     func getRandomImage(of breedId: String) async throws -> CatImage
 }
@@ -31,7 +31,7 @@ struct CatsNetworkProvider: CatsNetworkProviding {
         .value
     }
     
-    func searchBreed(by term: String) async throws -> [Breed] {
+    func searchBreeds(by term: String) async throws -> [Breed] {
         let params = [
             "q": term
         ]
