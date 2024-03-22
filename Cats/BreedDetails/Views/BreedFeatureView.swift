@@ -17,45 +17,46 @@ struct BreedFeatureView: View {
     }
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: Constants.verticalSpacing) {
             HStack {
                 Text(title)
                 Spacer()
             }
-            HStack {
-                ForEach(
-                    0...(Constants.pointsNumber - 1),
-                    id: \.self
-                ) { pointIndex in
-                    Image(
-                        systemName: pointIndex < filledPointsCount ? Constants.filledImageName : Constants.unfilledImageName
-                    )
-                    if pointIndex != (Constants.pointsNumber - 1) {
-                        Image(systemName: "minus")
-                    }
-                }
-                Spacer()
-            }
-            .foregroundStyle(
-                Color(
-                    uiColor:
-                        UIColor(
-                            red: 159 / 255,
-                            green: 199 / 255,
-                            blue: 224 / 255,
-                            alpha: 1
-                        )
-                )
-            )
+            pointImagesStack
         }
     }
 }
 
 private extension BreedFeatureView {
+    var pointImagesStack: some View {
+        HStack {
+            ForEach(
+                0...Constants.pointsLastIndex,
+                id: \.self
+            ) { pointIndex in
+                Image(
+                    systemName: pointIndex < filledPointsCount ? Constants.filledImageName : Constants.unfilledImageName
+                )
+                if pointIndex != Constants.pointsLastIndex {
+                    Image(systemName: Constants.pointSeparatorImageName)
+                }
+            }
+            Spacer()
+        }
+        .foregroundStyle(
+            Color(uiColor: Constants.foregroundColor)
+        )
+    }
+}
+
+private extension BreedFeatureView {
     enum Constants {
-        static let pointsNumber = 5
+        static let verticalSpacing = 10.0
+        static let pointsLastIndex = 4
         static let filledImageName = "circlebadge.fill"
         static let unfilledImageName = "circlebadge"
+        static let pointSeparatorImageName = "minus"
+        static let foregroundColor = UIColor(r: 159, g: 199, b: 224, a: 1)
     }
 }
 

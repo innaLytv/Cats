@@ -48,7 +48,7 @@ private extension FeedView {
                 )
             Spacer()
         }
-        .padding(.top, Constants.Title.verticalPadding)
+        .padding(.top, Constants.Title.verticalSpacing)
     }
     
     var searchField: some View {
@@ -59,7 +59,7 @@ private extension FeedView {
         .onChange(of: viewModel.searchText) {
             viewModel.search(for: viewModel.searchText)
         }
-        .padding(.all, Constants.Search.padding)
+        .padding(.all, Constants.Search.Spacing)
         .background(
             Color(uiColor: Constants.Search.backgroundColor)
         )
@@ -104,7 +104,7 @@ private extension FeedView {
         enum Title {
             static let text = "Select a breed"
             static let foregroundColor = UIColor(r: 96, g: 120, b: 135, a: 1)
-            static let verticalPadding = 30.0
+            static let verticalSpacing = 30.0
         }
         enum BreedCard {
             static let height = 200.0
@@ -112,7 +112,7 @@ private extension FeedView {
         }
         enum Search {
             static let text = "Search"
-            static let padding = 15.0
+            static let Spacing = 15.0
             static let backgroundColor = UIColor(r: 242, g: 242, b: 242, a: 1)
             static let cornerRadius = 8.0
             static let bottomSpacing = 20.0

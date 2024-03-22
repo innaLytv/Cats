@@ -25,110 +25,12 @@ struct BreedDetailsView: View {
                     closeButton
                 }
                 ZStack {
-                    Rectangle()
-                        .fill(
-                            Color(.white)
-                        )
-                        .cornerRadius(8)
-                        .frame(minHeight: 100)
-                        .offset(y: -20)
-                        .shadow(
-                            color: Color(UIColor.black.withAlphaComponent(0.1)),
-                            radius: 5,
-                            y: -10
-                        )
-                    
+                    contentView
                     VStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                Text(viewModel.breed.name)
-                                    .font(.title)
-                                    .fontWeight(.heavy)
-                                    .foregroundStyle(
-                                        Color(uiColor: Constants.Title.foregroundColor)
-                                    )
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Text("Origin: \(viewModel.breed.origin)")
-                                    .foregroundStyle(.black)
-                                Spacer()
-                            }
-                            
-                            HStack {
-                                Text("Life span: \(viewModel.breed.lifeSpan) years")
-                                    .foregroundStyle(.black)
-                                Spacer()
-                            }
-                            
-                            Text(viewModel.breed.description)
-                                .font(.callout)
-                                .fontWeight(.regular)
-                                .foregroundStyle(.black)
-                                .fixedSize(horizontal: false, vertical: true)
-                        }
-                        .padding(.horizontal, Constants.horizontalSpacing)
-                        
-                        ScrollView(.horizontal) {
-                            HStack(spacing: 8) {
-                                ForEach(
-                                    viewModel.temperament,
-                                    id: \.self
-                                ) { temperament in
-                                    ZStack {
-                                        RoundedRectangle(cornerRadius: 8)
-                                            .foregroundStyle(
-                                                Color(
-                                                    uiColor: UIColor(
-                                                        red: 159 / 255,
-                                                        green: 199 / 255,
-                                                        blue: 224 / 255,
-                                                        alpha: 1
-                                                    )
-                                                )
-                                            )
-                                        Text(temperament)
-                                            .foregroundStyle(.white)
-                                            .font(Font(UIFont.systemFont(ofSize: 16, weight: .regular)))
-                                            .fixedSize(horizontal: true, vertical: false)
-                                            .padding()
-                                    }
-                                }
-                            }
-                            .padding(.horizontal, Constants.horizontalSpacing)
-                        }
-                        
-                        
-                        VStack(spacing: 16) {
-                            BreedFeatureView(
-                                filledPointsCount: viewModel.breed.intelligence,
-                                title: Constants.Strings.intelligence
-                            )
-                            BreedFeatureView(
-                                filledPointsCount: viewModel.breed.healthIssues,
-                                title: Constants.Strings.healthIssues
-                            )
-                            BreedFeatureView(
-                                filledPointsCount: viewModel.breed.childFrienly,
-                                title: Constants.Strings.childFriendly
-                            )
-                            BreedFeatureView(
-                                filledPointsCount: viewModel.breed.adaptability,
-                                title: Constants.Strings.adaptability
-                            )
-                            BreedFeatureView(
-                                filledPointsCount: viewModel.breed.socialNeeds,
-                                title: Constants.Strings.socialNeeds
-                            )
-
-                        }
-                        .padding(.horizontal, Constants.horizontalSpacing)
-                        .padding(.top, 12)
-                        
-                       
-                        Spacer(minLength: 48)
-                        
+                        labelsStack
+                        temperamentCollection
+                        breedFeatures
+                        Spacer(minLength: Constants.bottomSpacing)
                     }
                 }
                 
@@ -151,11 +53,11 @@ private extension BreedDetailsView {
                 Button(action: {
                     dismiss()
                 }, label: {
-                    Image(systemName: "xmark")
+                    Image(systemName: Constants.Close.imageName)
                 })
                 .foregroundStyle(Color.gray)
             }
-            .padding(.top, 55)
+            .padding(.top, Constants.Close.topSpacing)
             .padding(.horizontal, Constants.horizontalSpacing)
             Spacer()
         }
@@ -167,16 +69,16 @@ private extension BreedDetailsView {
                 Color(UIColor.clear)
             )
             .frame(
-                width: Constants.Image.side,
-                height: Constants.Image.side * 1.35
+                width: Constants.Image.width,
+                height: Constants.Image.height
             )
             .overlay {
                 AsyncImage(url: viewModel.imageURL) { image in
                     image.resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(
-                            maxWidth: Constants.Image.side,
-                            maxHeight: Constants.Image.side * 1.35
+                            maxWidth: Constants.Image.width,
+                            maxHeight: Constants.Image.height
                         )
                 } placeholder: {
                     ProgressView()
@@ -184,31 +86,157 @@ private extension BreedDetailsView {
             }
             .clipped()
     }
+    
+    var breedFeatures: some View {
+        VStack(spacing: Constants.BreedFeatures.verticalSpacing) {
+            BreedFeatureView(
+                filledPointsCount: viewModel.breed.intelligence,
+                title: Constants.BreedFeatures.intelligence
+            )
+            BreedFeatureView(
+                filledPointsCount: viewModel.breed.healthIssues,
+                title: Constants.BreedFeatures.healthIssues
+            )
+            BreedFeatureView(
+                filledPointsCount: viewModel.breed.childFrienly,
+                title: Constants.BreedFeatures.childFriendly
+            )
+            BreedFeatureView(
+                filledPointsCount: viewModel.breed.adaptability,
+                title: Constants.BreedFeatures.adaptability
+            )
+            BreedFeatureView(
+                filledPointsCount: viewModel.breed.socialNeeds,
+                title: Constants.BreedFeatures.socialNeeds
+            )
+            
+        }
+        .padding(.horizontal, Constants.horizontalSpacing)
+        .padding(.top, Constants.BreedFeatures.topSpacing)
+    }
+    
+    var temperamentCollection: some View {
+        ScrollView(.horizontal) {
+            HStack(spacing: Constants.Temperament.horizontalSpacing) {
+                ForEach(
+                    viewModel.temperament,
+                    id: \.self
+                ) { temperament in
+                    ZStack {
+                        RoundedRectangle(cornerRadius: Constants.Temperament.cornerRadius)
+                            .foregroundStyle(
+                                Color(uiColor: Constants.Temperament.backgroundColor)
+                            )
+                        Text(temperament)
+                            .foregroundStyle(.white)
+                            .font(.callout)
+                            .fixedSize(horizontal: true, vertical: false)
+                            .padding()
+                    }
+                }
+            }
+            .padding(.horizontal, Constants.horizontalSpacing)
+        }
+    }
+    
+    var contentView: some View {
+        Rectangle()
+            .fill(
+                Color(.white)
+            )
+            .cornerRadius(Constants.Content.cornerRadius)
+            .frame(minHeight: Constants.Content.minHeight)
+            .offset(y: Constants.Content.yOffset)
+            .shadow(
+                color: Color(Constants.Content.Shadow.color),
+                radius: Constants.Content.Shadow.radius,
+                y: Constants.Content.Shadow.yOffset
+            )
+    }
+    
+    var labelsStack: some View {
+        VStack(
+            alignment: .leading,
+            spacing: Constants.Labels.spacing
+        ) {
+            HStack {
+                Text(viewModel.breed.name)
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundStyle(
+                        Color(uiColor: Constants.Title.foregroundColor)
+                    )
+                Spacer()
+            }
+            
+            HStack {
+                Text(Constants.Labels.originText(viewModel.breed.origin))
+                Spacer()
+            }
+            
+            HStack {
+                Text(Constants.Labels.lifeSpanText(viewModel.breed.lifeSpan))
+                Spacer()
+            }
+            
+            Text(viewModel.breed.description)
+                .font(.callout)
+                .fontWeight(.regular)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .padding(.horizontal, Constants.horizontalSpacing)
+    }
 }
 
 private extension BreedDetailsView {
     enum Constants {
         static let horizontalSpacing = 30.0
-
+        static let bottomSpacing = 48.0
+        
         enum Image {
-            static let side: CGFloat = {
-                UIScreen.main.bounds.width/* - horizontalSpacing * 2*/
-            }()
+            static let width = UIScreen.main.bounds.width
+            static let height = UIScreen.main.bounds.width * 1.35
         }
         enum Title {
-            static let foregroundColor = UIColor(
-                red: 96 / 255,
-                green: 120 / 255,
-                blue: 135 / 255,
-                alpha: 1
-            )
+            static let foregroundColor = UIColor(r: 96, g: 120, b: 135, a: 1)
         }
-        enum Strings {
+        enum BreedFeatures {
             static let adaptability = "Adaptability"
             static let childFriendly = "Child-friendly"
             static let healthIssues = "Health Issues"
             static let intelligence = "Intelligence"
             static let socialNeeds = "Social Needs"
+            static let verticalSpacing = 16.0
+            static let topSpacing = 12.0
+        }
+        enum Close {
+            static let imageName = "xmark"
+            static let topSpacing = 55.0
+        }
+        enum Temperament {
+            static let horizontalSpacing = 8.0
+            static let cornerRadius = 8.0
+            static let backgroundColor = UIColor(r: 159, g: 199, b: 224, a: 1)
+        }
+        enum Content {
+            static let cornerRadius = 8.0
+            static let minHeight =  100.0
+            static let yOffset = -20.0
+            
+            enum Shadow {
+                static let color = UIColor.black.withAlphaComponent(0.1)
+                static let radius = 5.0
+                static let yOffset = -10.0
+            }
+        }
+        enum Labels {
+            static let spacing = 8.0
+            static func originText(_ input: String) -> String {
+                "Origin: \(input)"
+            }
+            static func lifeSpanText(_ input: String) -> String {
+                "Life span: \(input) years"
+            }
         }
     }
 }

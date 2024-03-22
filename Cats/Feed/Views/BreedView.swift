@@ -73,12 +73,7 @@ private extension BreedView {
 
 private extension BreedView {
     enum Constants {
-        static let backgroundColor = UIColor(
-            red: 159 / 255,
-            green: 199 / 255,
-            blue: 224 / 255,
-            alpha: 0.3
-        )
+        static let backgroundColor = UIColor(r: 159, g: 199, b: 224, a: 0.3)
         static let cornerRadius = 8.0
         static let bottomPadding = 8.0
     }
