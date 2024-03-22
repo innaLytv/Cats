@@ -39,7 +39,7 @@ struct BreedDetailsView: View {
                         )
                     
                     VStack {
-                        VStack(spacing: 8) {
+                        VStack(alignment: .leading, spacing: 8) {
                             HStack {
                                 Text(viewModel.breed.name)
                                     .font(.title)
@@ -90,7 +90,7 @@ struct BreedDetailsView: View {
                                             )
                                         Text(temperament)
                                             .foregroundStyle(.white)
-                                            .font(.headline)
+                                            .font(Font(UIFont.systemFont(ofSize: 16, weight: .regular)))
                                             .fixedSize(horizontal: true, vertical: false)
                                             .padding()
                                     }
@@ -126,6 +126,7 @@ struct BreedDetailsView: View {
                         .padding(.horizontal, Constants.horizontalSpacing)
                         .padding(.top, 12)
                         
+                       
                         Spacer(minLength: 48)
                         
                     }

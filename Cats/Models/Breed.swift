@@ -6,6 +6,7 @@
 //
 
 struct Breed: Codable, Hashable {
+    let id: String
     let name: String
     let imageID: String?
     let temperament: String
@@ -19,7 +20,7 @@ struct Breed: Codable, Hashable {
     let socialNeeds: Int
 
     enum CodingKeys: String, CodingKey {
-        case name, imageID = "reference_image_id", origin,
+        case id, name, imageID = "reference_image_id", origin,
              temperament, description, lifeSpan = "life_span",
              intelligence, childFrienly = "child_friendly",
              healthIssues = "health_issues", adaptability,

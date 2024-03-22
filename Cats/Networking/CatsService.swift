@@ -8,14 +8,13 @@
 import Alamofire
 
 protocol CatsNetworkProviding {
-    func getAllBreeds(page: Int) async throws -> [Breed]
+    func getBreeds(page: Int) async throws -> [Breed]
     func searchBreeds(by term: String) async throws -> [Breed]
-    func getRandomFact(of breedId: String) async throws -> BreedFact
     func getRandomImage(of breedId: String) async throws -> CatImage
 }
 
 struct CatsNetworkProvider: CatsNetworkProviding {
-    func getAllBreeds(page: Int) async throws -> [Breed] {
+    func getBreeds(page: Int) async throws -> [Breed] {
         let params = [
             "limit": String(Constants.breedsLimit),
             "page": String(page)
@@ -87,7 +86,7 @@ private extension CatsNetworkProvider {
 private extension CatsNetworkProvider {
     enum Constants {
         static let baseURL = "https://api.thecatapi.com/v1/"
-        static let breedsLimit = 100
+        static let breedsLimit = 15
         static let apiKey = "live_WbfXqQTprPqn8hxo6kMiffwWgxN74tJ6k4ZL4p4He6HnlTHGZMMDQ430DTSMRfcS"
     }
 }
