@@ -34,11 +34,6 @@ struct BreedDetailsView: View {
                             Spacer(minLength: Constants.bottomSpacing)
                         }
                     }
-                    NavigationLink {
-                        BreedImageGalleryView(viewModel: viewModel.breedImageGalleryViewModel)
-                    } label: {
-                        Label("Show Detail View", systemImage: "globe")
-                    }
                 }
             }
             .scrollIndicators(.hidden)
@@ -175,6 +170,15 @@ private extension BreedDetailsView {
                         Color(Constants.Title.foregroundColor)
                     )
                 Spacer()
+                NavigationLink(destination: {
+                    BreedImageGalleryView(viewModel: viewModel.breedImageGalleryViewModel)
+                }, label: {
+                    Image(systemName: Constants.Labels.GalleryButton.imageName)
+                        .foregroundStyle(
+                            Color(Constants.Labels.GalleryButton.foregroundColor)
+                        )
+                        .font(.largeTitle)
+                })
             }
             
             HStack {
@@ -244,6 +248,11 @@ private extension BreedDetailsView {
             }
             static func lifeSpanText(_ input: String) -> String {
                 "Life span: \(input) years"
+            }
+            
+            enum GalleryButton {
+                static let imageName = "photo.fill"
+                static let foregroundColor = UIColor(r: 159, g: 199, b: 224, a: 1)
             }
         }
     }
