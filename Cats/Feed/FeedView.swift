@@ -23,15 +23,12 @@ struct FeedView: View {
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, Constants.horizontalSpacing)
-        .task {
-            await viewModel.onAppear()
+        .onAppear {
+            viewModel.onAppear()
         }
         .fullScreenCover(isPresented: $showingSheet) {
             BreedDetailsView(
-                viewModel: BreedDetailsViewModel(
-                    breed: viewModel.lastSelectedBreed!,
-                    imageURL: viewModel.breedsImageURLs[viewModel.lastSelectedBreed!.id]
-                )
+                viewModel: viewModel.breedDetailsViewModel
             )
         }
     }
@@ -44,7 +41,7 @@ private extension FeedView {
                 .font(.largeTitle)
                 .fontWeight(.black)
                 .foregroundStyle(
-                    Color(uiColor: Constants.Title.foregroundColor)
+                    Color(Constants.Title.foregroundColor)
                 )
             Spacer()
         }
@@ -61,7 +58,7 @@ private extension FeedView {
         }
         .padding(.all, Constants.Search.Spacing)
         .background(
-            Color(uiColor: Constants.Search.backgroundColor)
+            Color(Constants.Search.backgroundColor)
         )
         .foregroundColor(.black)
         .cornerRadius(Constants.Search.cornerRadius)
@@ -83,13 +80,13 @@ private extension FeedView {
                 BreedView(
                     imageURL: viewModel.breedsImageURLs[breed.id],
                     title: breed.name,
-                    height: Constants.BreedCard.height,
-                    onTapAction: {
-                        showingSheet.toggle()
-                        viewModel.breedSelected(breed)
-                    }
+                    height: Constants.BreedCard.height
                 )
-                .onAppear(){
+                .onTapGesture {
+                    showingSheet.toggle()
+                    viewModel.breedSelected(breed)
+                }
+                .onAppear {
                     viewModel.breedShown(at: index)
                 }
             }
@@ -102,7 +99,7 @@ private extension FeedView {
         static let horizontalSpacing = 20.0
         
         enum Title {
-            static let text = "Select a breed"
+            static let text = "Choose your hero"
             static let foregroundColor = UIColor(r: 96, g: 120, b: 135, a: 1)
             static let verticalSpacing = 30.0
         }
@@ -118,12 +115,4 @@ private extension FeedView {
             static let bottomSpacing = 20.0
         }
     }
-}
-
-#Preview {
-    FeedView(
-        viewModel: FeedViewModel(
-            service: CatsNetworkProvider()
-        )
-    )
 }

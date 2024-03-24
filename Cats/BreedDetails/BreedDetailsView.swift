@@ -18,30 +18,38 @@ struct BreedDetailsView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack {
-                ZStack {
-                    image
-                    closeButton
-                }
-                ZStack {
-                    contentView
-                    VStack {
-                        labelsStack
-                        temperamentCollection
-                        breedFeatures
-                        Spacer(minLength: Constants.bottomSpacing)
+        NavigationStack {
+            ScrollView {
+                VStack {
+                    ZStack {
+                        image
+                        closeButton
+                    }
+                    ZStack {
+                        contentView
+                        VStack {
+                            labelsStack
+                            temperamentCollection
+                            breedFeatures
+                            Spacer(minLength: Constants.bottomSpacing)
+                        }
+                    }
+                    NavigationLink {
+                        BreedImageGalleryView(viewModel: viewModel.breedImageGalleryViewModel)
+                    } label: {
+                        Label("Show Detail View", systemImage: "globe")
                     }
                 }
-                
             }
+            .scrollIndicators(.hidden)
+            .padding(.horizontal, Constants.horizontalSpacing)
+            .ignoresSafeArea()
+            .background(
+                Color(UIColor.systemBackground)
+            )
+            .navigationTitle("")
+            .navigationBarHidden(true)
         }
-        .scrollIndicators(.hidden)
-        .ignoresSafeArea()
-        .background(
-            Color(.white)
-        )
-        .padding(.horizontal, Constants.horizontalSpacing)
     }
 }
 
@@ -125,10 +133,10 @@ private extension BreedDetailsView {
                     ZStack {
                         RoundedRectangle(cornerRadius: Constants.Temperament.cornerRadius)
                             .foregroundStyle(
-                                Color(uiColor: Constants.Temperament.backgroundColor)
+                                Color(Constants.Temperament.backgroundColor)
                             )
                         Text(temperament)
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color(UIColor.systemBackground))
                             .font(.callout)
                             .fixedSize(horizontal: true, vertical: false)
                             .padding()
@@ -142,7 +150,7 @@ private extension BreedDetailsView {
     var contentView: some View {
         Rectangle()
             .fill(
-                Color(.white)
+                Color(UIColor.systemBackground)
             )
             .cornerRadius(Constants.Content.cornerRadius)
             .frame(minHeight: Constants.Content.minHeight)
@@ -164,7 +172,7 @@ private extension BreedDetailsView {
                     .font(.title)
                     .fontWeight(.heavy)
                     .foregroundStyle(
-                        Color(uiColor: Constants.Title.foregroundColor)
+                        Color(Constants.Title.foregroundColor)
                     )
                 Spacer()
             }

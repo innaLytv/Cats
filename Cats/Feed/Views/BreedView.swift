@@ -12,18 +12,15 @@ struct BreedView: View {
     private let imageURL: URL?
     private let title: String
     private let height: CGFloat
-    private let onTapAction: () -> Void
     
     init(
         imageURL: URL?,
         title: String,
-        height: CGFloat,
-        onTapAction: @escaping () -> Void
+        height: CGFloat
     ) {
         self.imageURL = imageURL
         self.title = title
         self.height = height
-        self.onTapAction = onTapAction
     }
     
     var body: some View {
@@ -32,9 +29,6 @@ struct BreedView: View {
             informationView
         }
         .cornerRadius(Constants.cornerRadius)
-        .onTapGesture {
-            onTapAction()
-        }
     }
 }
 
@@ -43,7 +37,7 @@ private extension BreedView {
         Rectangle()
             .frame(height: height)
             .foregroundStyle(
-                Color(uiColor: Constants.backgroundColor)
+                Color(Constants.backgroundColor)
             )
     }
     

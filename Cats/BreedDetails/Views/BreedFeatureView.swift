@@ -44,7 +44,7 @@ private extension BreedFeatureView {
             Spacer()
         }
         .foregroundStyle(
-            Color(uiColor: Constants.foregroundColor)
+            Color(Constants.foregroundColor)
         )
     }
 }

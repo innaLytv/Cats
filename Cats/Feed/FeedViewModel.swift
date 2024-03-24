@@ -15,11 +15,10 @@ final class FeedViewModel: ObservableObject {
     @Published var searchText: String = ""
     private var allBreeds: [Breed] = []
     private var searchTask: Task<Void, Error>?
+    private var pageToLoadIndex = 0
+    private var lastSelectedBreed: Breed?
     private let service: CatsNetworkProviding
-    private var lastLoadedBreedsPage = 0
     private let prefetchOffset = 5
-    
-    var lastSelectedBreed: Breed?
     
     init(service: CatsNetworkProviding) {
         self.service = service
@@ -28,7 +27,7 @@ final class FeedViewModel: ObservableObject {
 
 extension FeedViewModel {
     @MainActor 
-    func onAppear() async {
+    func onAppear() {
         loadBreedsBatch()
     }
 
@@ -51,12 +50,19 @@ extension FeedViewModel {
     @MainActor
     func breedShown(at index: Int) {
         guard index == allBreeds.count - prefetchOffset else { return }
-        lastLoadedBreedsPage += 1
         loadBreedsBatch()
     }
 
     func breedSelected(_ breed: Breed) {
         lastSelectedBreed = breed
+    }
+    
+    var breedDetailsViewModel: BreedDetailsViewModel {
+        BreedDetailsViewModel(
+            breed: lastSelectedBreed!,
+            imageURL: breedsImageURLs[lastSelectedBreed!.id],
+            service: service
+        )
     }
 }
 
@@ -65,7 +71,7 @@ private extension FeedViewModel {
     func loadImages(for breeds: [Breed]) async throws {
         for breed in breeds {
             guard let imageID = breed.imageID, breedsImageURLs[breed.id] == nil else { continue }
-            let imageURL = try await service.getRandomImage(of: imageID).url
+            let imageURL = try await service.getImage(of: imageID).url
             breedsImageURLs[breed.id] = URL(string: imageURL)
         }
     }
@@ -74,9 +80,10 @@ private extension FeedViewModel {
     func loadBreedsBatch() {
         Task {
             do {
-                let newBreeds = try await service.getBreeds(page: lastLoadedBreedsPage)
+                let newBreeds = try await service.getBreeds(page: pageToLoadIndex)
                 allBreeds.append(contentsOf: newBreeds)
                 displayedBreeds = allBreeds
+                pageToLoadIndex += 1
                 try await loadImages(for: newBreeds)
             } catch {
                 

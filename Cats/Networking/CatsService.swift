@@ -10,7 +10,8 @@ import Alamofire
 protocol CatsNetworkProviding {
     func getBreeds(page: Int) async throws -> [Breed]
     func searchBreeds(by term: String) async throws -> [Breed]
-    func getRandomImage(of breedId: String) async throws -> CatImage
+    func getImage(of breedId: String) async throws -> CatImage
+    func getImages(of breedId: String, limit: Int, page: Int) async throws -> [CatImage]
 }
 
 struct CatsNetworkProvider: CatsNetworkProviding {
@@ -43,32 +44,36 @@ struct CatsNetworkProvider: CatsNetworkProviding {
         .serializingDecodable([Breed].self)
         .value
     }
-    
-    func getRandomFact(of breedId: String) async throws -> BreedFact {
+
+    func getImage(of breedId: String) async throws -> CatImage {
         let params = [
-            "limit": "1",
-            "page": "0"
+            "api_key": Constants.apiKey,
+            "breed_ids": breedId
         ]
         return try await AF.request(
             requestURL(
-                path: "breeds/:\(breedId)/facts",
+                path: "images/search?",
                 parameters: params
             )
         )
-        .serializingDecodable(BreedFact.self)
+        .serializingDecodable(CatImage.self)
         .value
     }
     
-    func getRandomImage(of breedId: String) async throws -> CatImage {
-        let headers: HTTPHeaders = ["x-api-key" : Constants.apiKey]
+    func getImages(of breedId: String, limit: Int, page: Int) async throws -> [CatImage] {
+        let params = [
+            "api_key": Constants.apiKey,
+            "breed_ids": breedId,
+            "limit": String(limit),
+            "page": String(page)
+        ]
         return try await AF.request(
             requestURL(
-                path: "images/\(breedId)",
-                parameters: [:]
-            ),
-            headers: headers
+                path: "images/search?",
+                parameters: params
+            )
         )
-        .serializingDecodable(CatImage.self)
+        .serializingDecodable([CatImage].self)
         .value
     }
 }

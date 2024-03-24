@@ -14,8 +14,8 @@
             filePath = "Cats/Networking/CatsService.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
             landmarkName = "getBreeds(page:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -23,17 +23,17 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "4BE634D0-65ED-4544-9FE2-255F99B9C344"
-            shouldBeEnabled = "No"
+            uuid = "C8FA86AB-B795-4648-AD78-8C383335CDBD"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cats/Feed/FeedViewModel.swift"
+            filePath = "Cats/BreedImageGallery/BreedImageGalleryView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "breedShown(at:)"
-            landmarkType = "7">
+            startingLineNumber = "113"
+            endingLineNumber = "113"
+            landmarkName = "Header"
+            landmarkType = "13">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
