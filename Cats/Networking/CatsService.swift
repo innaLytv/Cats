@@ -46,15 +46,15 @@ struct CatsNetworkProvider: CatsNetworkProviding {
     }
 
     func getImage(of breedId: String) async throws -> CatImage {
-        let params = [
-            "api_key": Constants.apiKey,
-            "breed_ids": breedId
+        let headers: HTTPHeaders = [
+            "x-api-key": Constants.apiKey
         ]
         return try await AF.request(
             requestURL(
-                path: "images/search?",
-                parameters: params
-            )
+                path: "images/\(breedId)",
+                parameters: [:]
+            ),
+            headers: headers
         )
         .serializingDecodable(CatImage.self)
         .value

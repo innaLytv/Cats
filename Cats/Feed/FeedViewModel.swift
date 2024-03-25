@@ -10,10 +10,14 @@ import SwiftUI
 
 final class FeedViewModel: ObservableObject {
     
+    enum ErrorState {
+        case somethingWentWrong, noSearchResults
+    }
+    
     @Published var displayedBreeds: [Breed] = []
     @Published var breedsImageURLs: [String: URL] = [:]
     @Published var searchText: String = ""
-    @Published var shouldShowEmptyState: Bool = false
+    @Published var errorState: ErrorState?
     private var allBreeds: [Breed] = []
     private var searchTask: Task<Void, Error>?
     private var pageToLoadIndex = 0
@@ -50,6 +54,7 @@ extension FeedViewModel {
             do {
                 try Task.checkCancellation()
                 displayedBreeds = try await service.searchBreeds(by: query)
+                errorState = displayedBreeds.count == 0 ? .noSearchResults : nil
                 try await loadImages(for: displayedBreeds)
             } catch { }
         }
@@ -94,7 +99,7 @@ private extension FeedViewModel {
                 pageToLoadIndex += 1
                 try await loadImages(for: newBreeds)
             } catch {
-                shouldShowEmptyState = displayedBreeds.count == 0
+                errorState = displayedBreeds.count == 0 ? .somethingWentWrong : nil
             }
         }
     }

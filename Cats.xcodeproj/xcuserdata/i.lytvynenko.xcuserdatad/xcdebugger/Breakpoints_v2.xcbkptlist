@@ -23,17 +23,206 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C8FA86AB-B795-4648-AD78-8C383335CDBD"
-            shouldBeEnabled = "Yes"
+            uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Cats/BreedImageGallery/BreedImageGalleryView.swift"
+            filePath = "Cats/Feed/FeedViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "Header"
-            landmarkType = "13">
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "loadImages(for:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8 - 40810c5626c105cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Cats.FeedViewModel.loadImages(for: Swift.Array&lt;Cats.Breed&gt;) async throws -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/Feed/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "600">
+               </Location>
+               <Location
+                  uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8 - 40810c5626c105cf"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(1) suspend resume partial function for Cats.FeedViewModel.loadImages(for: Swift.Array&lt;Cats.Breed&gt;) async throws -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/Feed/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "688">
+               </Location>
+               <Location
+                  uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8 - 9fa0b6204daff9cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Cats.FeedViewModel.loadImages(for: Swift.Array&lt;Cats.Breed&gt;) async throws -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/Feed/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "104">
+               </Location>
+               <Location
+                  uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8 - 9fa0b6204daff9cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for Cats.FeedViewModel.loadImages(for: Swift.Array&lt;Cats.Breed&gt;) async throws -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/Feed/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "984">
+               </Location>
+               <Location
+                  uuid = "25EEC01E-B4F7-4F79-B978-6F4CA72BE7F8 - 3750f50abedb1bc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for Cats.FeedViewModel.loadImages(for: Swift.Array&lt;Cats.Breed&gt;) async throws -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/Feed/FeedViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "81"
+                  endingLineNumber = "81"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "02F498E7-82A3-4BAA-891E-6AEE49CE11FC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cats/Feed/FeedViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "loadImages(for:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E1EE1CD4-BE67-4C7A-A1DF-31D4EBDF2B9C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "63"
+            endingLineNumber = "63"
+            landmarkName = "loadImages()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E1EE1CD4-BE67-4C7A-A1DF-31D4EBDF2B9C - 9750308619152040"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Cats.BreedImageGalleryViewModel.loadImages() -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "416">
+               </Location>
+               <Location
+                  uuid = "E1EE1CD4-BE67-4C7A-A1DF-31D4EBDF2B9C - d326badd1050c67d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Cats.BreedImageGalleryViewModel.loadImages() -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "57"
+                  endingLineNumber = "57"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4B5C01D2-1083-41EE-B55C-6439E597899C"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
+            landmarkName = "loadImages()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4B5C01D2-1083-41EE-B55C-6439E597899C - 97503086191523dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(3) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Cats.BreedImageGalleryViewModel.loadImages() -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "400">
+               </Location>
+               <Location
+                  uuid = "4B5C01D2-1083-41EE-B55C-6439E597899C - d326badd1050c5e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "(4) suspend resume partial function for closure #1 @Sendable () async -&gt; () in Cats.BreedImageGalleryViewModel.loadImages() -&gt; ()"
+                  moduleName = "Cats"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/i.lytvynenko/Documents/GitHub/Cats/Cats/BreedImageGallery/BreedImageGalleryViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "54"
+                  endingLineNumber = "54"
+                  offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

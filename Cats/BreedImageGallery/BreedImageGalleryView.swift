@@ -9,7 +9,6 @@ import SwiftUI
 
 struct BreedImageGalleryView: View {
     @ObservedObject private var viewModel: BreedImageGalleryViewModel
-    @State var selectedImageIndex: Int?
     @Environment(\.dismiss) private var dismiss
     
     init(viewModel: BreedImageGalleryViewModel) {
@@ -19,10 +18,17 @@ struct BreedImageGalleryView: View {
     var body: some View {
         ZStack {
             ScrollView {
-                header
-                imagesCollection
+                if viewModel.shouldShowErrorState {
+                    emptyStateView
+                } else {
+                    header
+                    imagesCollection
+                }
             }
             .scrollIndicators(.hidden)
+            .refreshable {
+                viewModel.refresh()
+            }
             detailedImage
         }
         .onAppear {
@@ -72,11 +78,10 @@ private extension BreedImageGalleryView {
             ) { index, imageURL in
                 GalleryView(
                     imageURL: imageURL,
-                    size: CGSize(width: Constants.Images.side, height: Constants.Images.side),
-                    backgroundColor: Constants.Images.backgroundColor
+                    size: CGSize(width: Constants.Images.side, height: Constants.Images.side)
                 )
                 .onTapGesture {
-                    selectedImageIndex = index
+                    viewModel.imageSelected(at: index)
                 }
                 .onAppear {
                     viewModel.imageShown(at: index)
@@ -89,20 +94,30 @@ private extension BreedImageGalleryView {
     var detailedImage: some View {
         ZStack {
             Rectangle()
+                .fill(.black)
                 .frame(width: Constants.DetailedImage.Fade.size.width, height: Constants.DetailedImage.Fade.size.height)
-                .opacity(selectedImageIndex == nil ? 0 : Constants.DetailedImage.Fade.opacity)
-                .animation(.easeInOut, value: selectedImageIndex)
+                .opacity(viewModel.selectedImageIndex == nil ? 0 : Constants.DetailedImage.Fade.opacity)
+                .animation(.easeInOut, value: viewModel.selectedImageIndex)
                 .onTapGesture {
-                    selectedImageIndex = nil
+                    viewModel.imageSelected(at: nil)
                 }
             GalleryView(
-                imageURL: selectedImageIndex == nil ? nil : viewModel.imageURLs[selectedImageIndex!],
+                imageURL: viewModel.selectedImageURL,
                 size: CGSize(width: Constants.DetailedImage.side, height: Constants.DetailedImage.side),
-                backgroundColor: .clear,
                 contentMode: .fit
             )
-            .opacity(selectedImageIndex == nil ? 0 : 1)
-            .animation(.easeInOut, value: selectedImageIndex)
+            .opacity(viewModel.selectedImageIndex == nil ? 0 : 1)
+            .animation(.easeInOut, value: viewModel.selectedImageIndex)
+        }
+    }
+    
+    var emptyStateView: some View {
+        ZStack {
+            Image(
+                Constants.EmptyState.imageName,
+                bundle: .main
+            )
+            .padding(.top, Constants.EmptyState.topSpacing)
         }
     }
 }
@@ -128,7 +143,6 @@ private extension BreedImageGalleryView {
             static let spacing = 0.0
             static let bottomSpacing = 64.0
             static let side = UIScreen.main.bounds.width / 3
-            static let backgroundColor = UIColor(r: 159, g: 199, b: 224, a: 0.3)
         }
         enum DetailedImage {
             static let side = UIScreen.main.bounds.width
@@ -137,6 +151,10 @@ private extension BreedImageGalleryView {
                 static let opacity = 0.75
                 static let size = UIScreen.main.bounds
             }
+        }
+        enum EmptyState {
+            static let imageName = "somethingWentWrong"
+            static let topSpacing = 64.0
         }
     }
 }

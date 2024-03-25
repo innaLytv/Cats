@@ -17,16 +17,13 @@ struct FeedView: View {
     
     var body: some View {
         ScrollView {
-            if viewModel.shouldShowEmptyState {
-                emptyStateView
+            title
+            searchField
+            if viewModel.errorState != nil {
+                errorView
             } else {
-                title
-                searchField
                 breedsCollection
             }
-        }
-        .overlay {
-           
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, Constants.horizontalSpacing)
@@ -103,11 +100,19 @@ private extension FeedView {
         }
     }
     
-    var emptyStateView: some View {
+    @ViewBuilder
+    var errorView: some View {
         ZStack {
-            Image(Constants.EmptyState.imageName, bundle: .main)
-                .padding(.top, Constants.EmptyState.topSpacing)
+            switch viewModel.errorState {
+            case .somethingWentWrong:
+                Image(Constants.EmptyState.somethingWentWrongImageName)
+            case .noSearchResults:
+                Image(Constants.EmptyState.noSearchResultsImageName)
+            default:
+                fatalError("Unsupported error state")
+            }
         }
+        .padding(.top, Constants.EmptyState.topSpacing)
     }
 }
 
@@ -132,7 +137,8 @@ private extension FeedView {
             static let bottomSpacing = 20.0
         }
         enum EmptyState {
-            static let imageName = "somethingWentWrong"
+            static let somethingWentWrongImageName = "somethingWentWrong"
+            static let noSearchResultsImageName = "noSearchResults"
             static let topSpacing = 64.0
         }
     }
