@@ -13,6 +13,7 @@ final class FeedViewModel: ObservableObject {
     @Published var displayedBreeds: [Breed] = []
     @Published var breedsImageURLs: [String: URL] = [:]
     @Published var searchText: String = ""
+    @Published var shouldShowEmptyState: Bool = false
     private var allBreeds: [Breed] = []
     private var searchTask: Task<Void, Error>?
     private var pageToLoadIndex = 0
@@ -28,6 +29,13 @@ final class FeedViewModel: ObservableObject {
 extension FeedViewModel {
     @MainActor 
     func onAppear() {
+        loadBreedsBatch()
+    }
+    
+    @MainActor
+    func refresh() {
+        allBreeds = []
+        pageToLoadIndex = 0
         loadBreedsBatch()
     }
 
@@ -86,7 +94,7 @@ private extension FeedViewModel {
                 pageToLoadIndex += 1
                 try await loadImages(for: newBreeds)
             } catch {
-                
+                shouldShowEmptyState = displayedBreeds.count == 0
             }
         }
     }

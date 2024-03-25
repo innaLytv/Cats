@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FeedView: View {
     @ObservedObject private var viewModel: FeedViewModel
-    @State private var showingSheet = false
+    @State private var isBreedDetailsShown = false
     
     init(viewModel: FeedViewModel) {
         self.viewModel = viewModel
@@ -17,16 +17,26 @@ struct FeedView: View {
     
     var body: some View {
         ScrollView {
-            title
-            searchField
-            breedsCollection
+            if viewModel.shouldShowEmptyState {
+                emptyStateView
+            } else {
+                title
+                searchField
+                breedsCollection
+            }
+        }
+        .overlay {
+           
         }
         .scrollIndicators(.hidden)
         .padding(.horizontal, Constants.horizontalSpacing)
         .onAppear {
             viewModel.onAppear()
         }
-        .fullScreenCover(isPresented: $showingSheet) {
+        .refreshable {
+            viewModel.refresh()
+        }
+        .fullScreenCover(isPresented: $isBreedDetailsShown) {
             BreedDetailsView(
                 viewModel: viewModel.breedDetailsViewModel
             )
@@ -83,13 +93,20 @@ private extension FeedView {
                     height: Constants.BreedCard.height
                 )
                 .onTapGesture {
-                    showingSheet.toggle()
+                    isBreedDetailsShown.toggle()
                     viewModel.breedSelected(breed)
                 }
                 .onAppear {
                     viewModel.breedShown(at: index)
                 }
             }
+        }
+    }
+    
+    var emptyStateView: some View {
+        ZStack {
+            Image(Constants.EmptyState.imageName, bundle: .main)
+                .padding(.top, Constants.EmptyState.topSpacing)
         }
     }
 }
@@ -113,6 +130,10 @@ private extension FeedView {
             static let backgroundColor = UIColor(r: 242, g: 242, b: 242, a: 1)
             static let cornerRadius = 8.0
             static let bottomSpacing = 20.0
+        }
+        enum EmptyState {
+            static let imageName = "somethingWentWrong"
+            static let topSpacing = 64.0
         }
     }
 }

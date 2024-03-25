@@ -138,9 +138,9 @@
 		34CB3D8B2BACD78F00B6E681 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
-				34CB3D8C2BACD7B900B6E681 /* Views */,
-				343F712C2B9FBB3500D9288F /* FeedViewModel.swift */,
 				349C6EB72B8BAE1900B4C953 /* FeedView.swift */,
+				343F712C2B9FBB3500D9288F /* FeedViewModel.swift */,
+				34CB3D8C2BACD7B900B6E681 /* Views */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
